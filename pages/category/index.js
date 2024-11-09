@@ -1,12 +1,5 @@
 import authMiddleware from "../../middleware/authMiddleware";
 import { Category } from "../../models/category";
-import cloudinary from "cloudinary";
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 export default async function handler(req, res) {
   switch (req.method) {
