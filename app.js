@@ -46,6 +46,10 @@ app.post("/api/v1/logout", (req, res) => {
   res.send("Logged out successfully");
 });
 
+app.get("/", (req, res) => {
+  res.send("HELLO");
+});
+
 // Thêm route cho đăng ký
 app.post("/api/v1/register", async (req, res) => {
   const { username, password } = req.body;
