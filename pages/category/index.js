@@ -1,7 +1,28 @@
+// pages/category/index.js
 import authMiddleware from "../../middleware/authMiddleware";
 import { Category } from "../../models/category";
 
-export default async function handler(req, res) {
+export default function CategoryPage({ categories }) {
+  // Render categories here
+  return (
+    <div>
+      {categories.map((category) => (
+        <div key={category._id}>{category.name}</div>
+      ))}
+    </div>
+  );
+}
+
+export async function getServerSideProps() {
+  const categoryList = await Category.find(); // Fetch categories here
+  return {
+    props: {
+      categories: categoryList || [], // Pass categories to the page
+    },
+  };
+}
+
+export async function handler(req, res) {
   switch (req.method) {
     case "GET":
       const categoryList = await Category.find();
